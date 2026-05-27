@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: int_payments
+    columns:
+      - name: total_amount
+        data_tests:
+          - is_positive

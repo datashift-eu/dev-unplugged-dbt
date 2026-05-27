@@ -1,0 +1,36 @@
+alpha_2,alpha_3,country_name,region,currency_code
+AU,AUS,Australia,Oceania,AUD
+AT,AUT,Austria,Europe,EUR
+BE,BEL,Belgium,Europe,EUR
+BR,BRA,Brazil,Americas,BRL
+CA,CAN,Canada,Americas,CAD
+CH,CHE,Switzerland,Europe,CHF
+CN,CHN,China,Asia,CNY
+CZ,CZE,Czechia,Europe,CZK
+DE,DEU,Germany,Europe,EUR
+DK,DNK,Denmark,Europe,DKK
+ES,ESP,Spain,Europe,EUR
+FI,FIN,Finland,Europe,EUR
+FR,FRA,France,Europe,EUR
+GB,GBR,United Kingdom,Europe,GBP
+GR,GRC,Greece,Europe,EUR
+HU,HUN,Hungary,Europe,HUF
+IE,IRL,Ireland,Europe,EUR
+IN,IND,India,Asia,INR
+IT,ITA,Italy,Europe,EUR
+JP,JPN,Japan,Asia,JPY
+KR,KOR,South Korea,Asia,KRW
+LU,LUX,Luxembourg,Europe,EUR
+MX,MEX,Mexico,Americas,MXN
+NL,NLD,Netherlands,Europe,EUR
+NO,NOR,Norway,Europe,NOK
+NZ,NZL,New Zealand,Oceania,NZD
+PL,POL,Poland,Europe,PLN
+PT,PRT,Portugal,Europe,EUR
+RO,ROU,Romania,Europe,RON
+SE,SWE,Sweden,Europe,SEK
+SG,SGP,Singapore,Asia,SGD
+TR,TUR,Türkiye,Europe,TRY
+UA,UKR,Ukraine,Europe,UAH
+US,USA,United States,Americas,USD
+ZA,ZAF,South Africa,Africa,ZAR

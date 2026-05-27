@@ -1,0 +1,38 @@
+[project]
+name = "dbt_escape_room"
+version = "0.1.0"
+description = "Hands-on dbt escape room challenges built on DuckDB and the jaffle shop dataset."
+authors = [
+    { name = "Datashift", email = "hello@datashift.eu" }
+]
+requires-python = ">=3.11"
+
+dependencies = [
+    "dbt-core~=1.11.0",
+    "dbt-duckdb>=1.8.0",
+]
+
+[dependency-groups]
+scripts = [
+    "faker>=37.0.0",
+    "duckdb>=1.2.0",
+]
+dev = [
+    "sqlfluff>=3.0.0",
+    "sqlfluff-templater-dbt>=3.0.0",
+"ruff>=0.4.0",
+    "dbt-osmosis>=0.12.0,<1.0.0",
+    "detect-secrets>=1.5.0",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
