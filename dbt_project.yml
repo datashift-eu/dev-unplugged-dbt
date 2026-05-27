@@ -1,0 +1,36 @@
+name: "dbt_escape_room"
+require-dbt-version: ">=1.11.0,<2.0.0"
+
+profile: "dbt_escape_room"
+
+flags:
+  require_unique_project_resource_names: true
+  validate_macro_args: true
+  require_ref_searches_node_package_before_root: true
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  "dbt_escape_room":
+    staging:
+      +materialized: view
+      +tags: ["staging"]
+    intermediate:
+      +materialized: view
+      +tags: ["intermediate"]
+    marts:
+      +materialized: table
+      +tags: ["marts"]
+
+vars:
+  project_name: "dbt_escape_room"
