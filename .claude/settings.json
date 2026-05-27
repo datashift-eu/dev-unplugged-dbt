@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker *)",
+      "Bash(cat *)",
+      "Bash(mkdir *)",
+      "Bash(chmod *)",
+      "Bash(chown *)",
+      "Write",
+      "Edit"
+    ],
+    "defaultMode": "dontAsk"
+  }
+}

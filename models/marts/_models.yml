@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: fct_order_items
+    description: "One row per order line. Denormalized with customer country and product/category context."
+    columns:
+      - name: order_item_id
+        data_tests: [unique, not_null]
+      - name: product_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+
+  - name: agg_customer_rfm
+    description: "Per-customer RFM scores and segment classification, as-of 2026-01-01."
+    columns:
+      - name: customer_id
+        data_tests: [unique, not_null]
+
+  - name: fct_funnel_by_channel
+    description: "Per utm_source funnel counts and cart-to-purchase conversion."
+    columns:
+      - name: utm_source
+        data_tests: [not_null]
+      - name: sessions
+        data_tests: [not_null]

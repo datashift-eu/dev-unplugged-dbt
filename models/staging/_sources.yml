@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: "Raw operational data from the jaffle shop business systems."
+    schema: main
+    tables:
+      - name: raw_customers
+      - name: raw_orders
+      - name: raw_payments
+      - name: raw_reviews
+      - name: raw_products
+      - name: raw_products_v2
+      - name: raw_web_events
+      - name: raw_web_events_latest
+      - name: raw_order_items
+      - name: raw_product_categories

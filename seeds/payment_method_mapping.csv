@@ -1,0 +1,5 @@
+payment_method,payment_method_name,processing_fee_pct
+credit_card,Credit Card,2.9
+coupon,Coupon,0.0
+bank_transfer,Bank Transfer,0.5
+gift_card,Gift Card,0.0
