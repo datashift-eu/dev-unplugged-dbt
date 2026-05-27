@@ -1,0 +1,61 @@
+// =============================================================================
+// Dev Container -- dbt Escape Room
+// =============================================================================
+//
+// Provides a ready-to-use environment for the dbt escape room challenges.
+//
+// Workflow:
+//   1. Clone the repo and open in VS Code -> "Reopen in Container"
+//   2. Wait for `just setup` + `just seed` to finish (runs automatically)
+//   3. Launch the Voyager engine and start the first challenge
+//
+// All tools needed are pre-installed:
+//   - uv             (Python package manager, already in base image)
+//   - just           (task runner)
+//   - git            (dbt deps + version control)
+//   - sqlfluff       (installed by `uv sync` via postCreateCommand)
+//   - pre-commit     (installed by `uv sync` via postCreateCommand)
+//
+// Note: user creation, zsh, and git are handled in the Dockerfile rather than
+// via devcontainer "features" to avoid a known TLS issue where VS Code's
+// Node.js fails to fetch features from ghcr.io on some macOS machines.
+// =============================================================================
+{
+    "name": "dbt Escape Room",
+
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "innoverio.vscode-dbt-power-user",  // dbt Core IDE support
+                "ms-python.python",                  // Python language support
+                "charliermarsh.ruff",                // Python linting (matches ruff in pyproject.toml)
+                "dorzey.vscode-sqlfluff",            // SQL linting (calls sqlfluff from uv env)
+                "redhat.vscode-yaml",                // YAML validation for schema.yml, dbt_project.yml
+                "tamasfe.even-better-toml"           // TOML support for pyproject.toml
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                // jinja-sql is registered by the dbt Power User extension.
+                // Without this, {{ ref('...') }} and {% if %} show as syntax errors.
+                "files.associations": {
+                    "*.sql": "jinja-sql"
+                }
+            }
+        }
+    },
+
+    // Install deps and load seeds the first time the container is created so
+    // the player can dive in immediately.
+    "postCreateCommand": "just setup",
+
+    "remoteUser": "vscode",
+
+    // 8080: `dbt docs serve` / `just docs`.
+    // 4213: DuckDB UI (`duckdb --ui`).
+    "forwardPorts": [8080, 4213]
+}

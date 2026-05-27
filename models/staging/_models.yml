@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "One row per customer. Canonicalized country codes; emails lowercased."
+    columns:
+      - name: customer_id
+        description: "Surrogate PK from the source `id` column."
+        data_tests: [unique, not_null]
+      - name: country
+        description: "ISO 3166-1 alpha-2 country code, normalized (UPPER + TRIM)."
+
+  - name: stg_orders
+    description: "One row per order, post-cleanup. Orphan orders dropped; status trimmed."
+    columns:
+      - name: order_id
+        description: "Surrogate PK from the source `id` column."
+        data_tests: [not_null]
+      - name: status
+        description: "Order lifecycle status — one of completed, pending, cancelled."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['completed', 'pending', 'cancelled']
+      - name: customer_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+
+  - name: stg_payments
+    description: "One row per payment event. Cents converted to dollars."
+    columns:
+      - name: payment_id
+        description: "Surrogate PK from the source `id` column."
+        data_tests: [not_null]
+      - name: amount_dollars
+        description: "Payment amount in dollars (raw cents / 100, 2dp)."
