@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: int_payments
+    description: "One row per (order, payment method). Total dollars and event count for each combination."
+    columns:
+      - name: total_amount
+        description: "Sum of `amount_dollars` for this (order_id, payment_method_name)."
+        data_tests:
+          - is_positive
+      - name: payment_count
+        description: "Number of payment events that make up `total_amount`."
