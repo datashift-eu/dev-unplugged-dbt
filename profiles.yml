@@ -1,0 +1,18 @@
+dbt_escape_room:
+  target: "{{ env_var('DBT_TARGET', 'dev') }}"
+  outputs:
+    # DuckDB stores data in a local file. No credentials needed.
+    # All models are materialized in the 'main' schema by default.
+    # Add `schema: your_schema` under any target below to override.
+    dev:
+      type: duckdb
+      path: "dbt_escape_room_dev.duckdb"
+      threads: 4
+    acc:
+      type: duckdb
+      path: "dbt_escape_room_acc.duckdb"
+      threads: 4
+    pro:
+      type: duckdb
+      path: "dbt_escape_room_pro.duckdb"
+      threads: 8
